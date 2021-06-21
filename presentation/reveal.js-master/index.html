@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="./examples/assets/learn-typescript.png" data-background-size="100vh">
+			</section>
+			<section>
+				<section data-background-color="rgb(70, 70, 255)">What is TypeScript</section>
+				<section data-background-color="aquamarine">
+					<ul>
+						<li class="fragment fade-right">Developed in Microsoft</li>
+						<li class="fragment fade-right">Was created in October 2012 Anders Hejlsberg</li>
+						<li class="fragment fade-right">Strict syntactical superset of JavaScript</li>
+						<li class="fragment fade-right">OpenSource project</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section data-background-color="#e63946">Main Features</section>
+				<section data-background-color="#f1faee">
+					Type annotations and compile-time type checking
+				</section>
+				<section data-background-color="#a8dadc">
+					<ul>
+						<li>boolean</li>
+						<li class="fragment fade-right">number</li>
+						<li class="fragment fade-right">bigint</li>
+						<li class="fragment fade-right">string</li>
+						<li class="fragment fade-right">Object</li>
+						<li class="fragment fade-right">Any</li>
+						<li class="fragment fade-right">Symbol</li>
+						<li class="fragment fade-right">null and undefined</li>
+						<li class="fragment fade-right">unknown</li>
+						<li class="fragment fade-right">never</li>
+					</ul>
+				</section>
+				<section data-markdown data-background-color="#073b4c">
+					<textarea data-template>
+						  ```js [1-9]
+						  let x: number = 10;
+						  x = "try this"; // Error
+						  let hello: string = "hello world";
+						  let isValid: boolean = true;
+						  let u: undefined = undefined;
+						  let n: null = null;
+						  let someVar: any = "hello";
+						  someVar = 20;
+						  ```
+						</textarea>
+				</section>
+				<section data-background-color="#457b9d">
+					<p>Type inference</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								function add(a: number, b: number): number{
+									let result = a + b;
+								}
+							</code></pre>
+					</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								function add(a: number, b: number){
+									let result = a + b;
+								}
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#1d3557">
+					<p>Enumerated types</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								enum Color {
+									Red,
+									Green,
+									Blue,
+								  }
+								  let c: Color = Color.Green;
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#219ebc">
+					<p>Interfaces</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								interface IUser {
+									id: number;
+									name: string;
+								}
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#0081a7">
+					<p>Tuples</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								let typle: [string, number];
+								typle = ["hello", 10]; // OK
+								typle = [10, "hello"]; // Error
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#83c5be">
+					<p>Generics</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								function identity<Type>(arg: Type): Type {
+									return arg;
+								  }
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#2a9d8f">
+					<p>Namespaces</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								namespace Personnel {
+									export class Employee {
+
+										constructor(public name: string){
+										}
+									}
+								}
+								let alice = new Personnel.Employee("Alice");
+								console.log(alice.name);    // Alice
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#a2d2ff">
+					<p>Async/await</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								async function printDelayed(elements: string[]) {
+									for (const element of elements) {
+									  await delay(400);
+									  console.log(element);
+									}
+								  }
+							</code></pre>
+					</p>
+				</section>
+			</section>
+			<section>
+				<section data-background-color="#f1faee">
+					The following features are backported from ECMAScript 2015
+				</section>
+				<section data-background-color="#1d3557">
+					<p>Classes</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								class User {
+
+									name: string;
+									age: number;
+									print(){
+										console.log(`name: ${this.name}  age: ${this.age}`);
+									}
+									toString(): string{
+										return `${this.name}: ${this.age}`;
+									}
+								}
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#2a9d8f">
+					<p>Modules</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								export default function hello() {
+									console.log("Hello Typescript");
+								  }
+								//
+								//
+								import hello from "./message.js";
+								hello();
+							</code></pre>
+					</p>
+				</section>
+				<section data-background-color="#a2d2ff">
+					<p>Abbreviated "arrow" syntax for anonymous functions</p>
+					<p>
+					<pre><code data-trim data-noescape>
+								let sum = (x: number, y: number) => x + y;
+								let result = sum(15, 35); // 50
+								console.log(result);
+							</code></pre>
+					</p>
+				</section>
+			</section>
+			<section>
+				<section data-background-color="#ffcdb2">Compiler</section>
+				<section data-background-color="#8d99ae">
+					<ul>
+						<li class="fragment fade-right">tsc compiler</li>
+						<li class="fragment fade-right">Node.js</li>
+					</ul>
+					<p class="fragment fade-right">
+					<pre
+						class="fragment fade-right"><code data-trim data-noescape class="fragment fade-right">npm install -g typescript</code></pre>
+					</p>
+					<p class="fragment fade-right">
+					<pre
+						class="fragment fade-right"><code data-trim data-noescape class="fragment fade-right">npm update -g typescript</code></pre>
+					</p>
+					<p class="fragment fade-right">
+					<pre
+						class="fragment fade-right"><code data-trim data-noescape class="fragment fade-right">tsc -v</code></pre>
+					</p>
+				</section>
+				<section data-markdown data-background-color="rgb(70, 70, 255)">
+					<textarea data-template>
+						  ```js [1-15]
+						  <!DOCTYPE html>
+						  <html>
+						  <head>
+							  <meta charset="utf-8" />
+							  <title>typescript</title>
+						  </head>
+						  <body>
+							  <h2 id="header"></h2>
+							  <script src="index.js"></script>
+						  </body>
+						  </html>
+						  ```
+						</textarea>
+				</section>
+				<section data-markdown data-background-color="#2a9d8f">
+					<textarea data-template>
+						  ```js [1-10]
+						class User{
+							name : string;
+							constructor(_name:string){
+
+								this.name = _name;
+							}
+						}
+						const tom : User = new User("Том");
+						const header = this.document.getElementById("header");
+						header.innerHTML = "Привет " + tom.name;
+						  ```
+						</textarea>
+				</section>
+				<section data-background-image="./examples/assets/tscTojs.gif" data-background-size="1200px"></section>
+				<section data-background-color="#457b9d">
+					<ul>
+						<li class="fragment fade-right">tsconfig.json</li>
+						<li class="fragment fade-right">
+							<pre><code data-trim data-noescape>
+									{
+										"compilerOptions": {
+											"target": "es5",
+											"removeComments": true,
+											"outDir": "js",
+											"sourceMap": true,
+											"outFile": "../../built/local/tsc.js"
+										},
+										"files":[
+											"app.ts",
+											"interfaces.ts",
+											"classes.ts",
+										]
+									}
+								</code></pre>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
